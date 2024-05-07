@@ -1,6 +1,6 @@
 package vehiculo;
 
-public class Taxi extends Turismo implements Calculable, Iniciable {
+public class Taxi extends Turismo implements Calculable, Iniciable, Comparable {
    // attibutes
    private static final double IMPORTE_INICIO = 2;
    private double kmRecorridos;
@@ -64,6 +64,17 @@ public class Taxi extends Turismo implements Calculable, Iniciable {
    public int getMaxVelocidad() {
       
       return 200;
+   }
+
+   @Override
+   public int compareTo(Object o) {
+      if (this.importeKm > ((Taxi) o).importeKm){
+         return 1;
+      } else if (this.importeKm == ((Taxi) o).importeKm){
+         return 0;
+      } else {
+         return -1;
+      }
    }
    
 }
