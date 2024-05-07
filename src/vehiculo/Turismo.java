@@ -22,7 +22,7 @@ public abstract class Turismo extends Vehiculo{
 
    public abstract double calcularPrecioAlquiler(int numDias);
 
-   
+   public abstract int getMaxVelocidad();
    
    
 }

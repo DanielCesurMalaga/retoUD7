@@ -37,10 +37,33 @@ public class Taxi extends Turismo implements Calculable, Iniciable {
 
    @Override
    public String toString() {
-      return super.toString()+"; Importe Km:"+this.importeKm+"; KmRecorridos:"+this.kmRecorridos+"Coste del trayecto:"s;
+      return super.toString()+
+      "; Importe inicio:"+ IMPORTE_INICIO +
+      "; Importe Km:"+this.importeKm +
+      "; KmRecorridos:"+this.kmRecorridos+
+      "; Coste del trayecto:"+ this.calcularCosteTrayecto();
    }
 
-   
+   @Override
+   public double calcularCosteTrayecto() {
+      return (IMPORTE_INICIO+(this.kmRecorridos*this.importeKm));
+   }
 
+   @Override
+   public void reiniciarContador(double kilometros) {
+      this.kmRecorridos=kilometros;
+      System.out.println("El Taxi tiene acumulados un total de "+this.kmRecorridos+" km");     
+   }
+
+   @Override
+   public double calcularPrecioAlquiler(int numDias) {    
+      return (50*numDias);
+   }
+
+   @Override
+   public int getMaxVelocidad() {
+      
+      return 200;
+   }
    
 }
