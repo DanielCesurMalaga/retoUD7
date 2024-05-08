@@ -20,21 +20,21 @@ public class App {
 
         Autobus autobus = new Autobus("Iveco", "JXY", "0123456789abcdef#", 3, 60, 26);
 
-        List<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
-        listaVehiculos.add(taxi1);
-        listaVehiculos.add(taxi2);
-        listaVehiculos.add(particular1);
-        listaVehiculos.add(particular2);
-        listaVehiculos.add(autobus);
+        // List<Vehiculo> listaVehiculos = new ArrayList<Vehiculo>();
+        // listaVehiculos.add(taxi1);
+        // listaVehiculos.add(taxi2);
+        // listaVehiculos.add(particular1);
+        // listaVehiculos.add(particular2);
+        // listaVehiculos.add(autobus);
 
         // System.out.println("El taxi1 es: " + taxi1);
         // System.out.println("El vehículo 1 de la lista es: " + listaVehiculos.get(0));
 
         // y con array se puede heredar ??
-        Vehiculo[] arrayVehiculos = new Vehiculo[5];
-        for (int i = 0; i < arrayVehiculos.length; i++) {
-            arrayVehiculos[i] = listaVehiculos.get(i);
-        }
+        // Vehiculo[] arrayVehiculos = new Vehiculo[5];
+        // for (int i = 0; i < arrayVehiculos.length; i++) {
+        //     arrayVehiculos[i] = listaVehiculos.get(i);
+        // }
         // System.out.println("El taxi1 es: " + taxi1);
         // System.out.println("El vehículo 1 del array es: " + arrayVehiculos[0]);
 
@@ -43,7 +43,12 @@ public class App {
         // mostrarVehiculos("autobus", listaVehiculos);
 
         // comparamos los dos taxis.
-        System.out.println(taxi1.compareTo(taxi2)!=taxi2.compareTo(taxi1));
+        System.out.print("CompareTo en Taxi es congruente?: ");
+        System.out.println((taxi1.compareTo(taxi2)+taxi2.compareTo(taxi1))==0);
+
+        System.out.print("Si comparo dos herederos de Turismo es congruente?: ");
+        System.out.println((taxi1.compareTo(particular1)+(particular1.compareTo(taxi1)))==0);
+        
     }
 
     public static void mostrarVehiculos(String tipoVehiculo, List<Vehiculo> listaVehiculos) {

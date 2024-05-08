@@ -1,6 +1,6 @@
 package vehiculo;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Comparable {
    // attributes
    private String marca;
    private String modelo;
@@ -65,4 +65,11 @@ public abstract class Vehiculo {
       return "Marca:" + marca + "; Modelo:" + modelo + "; NBastidor:" + bastidor + "; NPuertas:" + puertas;
    }
 
+   @Override
+   public int compareTo(Object o) {
+      if (o instanceof Vehiculo) {
+         return ( this.getBastidor().compareTo(((Vehiculo) o).getBastidor()) );
+      } else return 1;
+
+   }
 }

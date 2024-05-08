@@ -37,44 +37,52 @@ public class Taxi extends Turismo implements Calculable, Iniciable, Comparable {
 
    @Override
    public String toString() {
-      return super.toString()+
-      "; Importe inicio:"+ IMPORTE_INICIO +
-      "; Importe Km:"+this.importeKm +
-      "; KmRecorridos:"+this.kmRecorridos+
-      "; Coste del trayecto:"+ this.calcularCosteTrayecto();
+      return super.toString() +
+            "; Importe inicio:" + IMPORTE_INICIO +
+            "; Importe Km:" + this.importeKm +
+            "; KmRecorridos:" + this.kmRecorridos +
+            "; Coste del trayecto:" + this.calcularCosteTrayecto();
    }
 
    @Override
    public double calcularCosteTrayecto() {
-      return (IMPORTE_INICIO+(this.kmRecorridos*this.importeKm));
+      return (IMPORTE_INICIO + (this.kmRecorridos * this.importeKm));
    }
 
    @Override
    public void reiniciarContador(double kilometros) {
-      this.kmRecorridos=kilometros;
-      System.out.println("El Taxi tiene acumulados un total de "+this.kmRecorridos+" km");     
+      this.kmRecorridos = kilometros;
+      System.out.println("El Taxi tiene acumulados un total de " + this.kmRecorridos + " km");
    }
 
    @Override
-   public double calcularPrecioAlquiler(int numDias) {    
-      return (50*numDias);
+   public double calcularPrecioAlquiler(int numDias) {
+      return (50 * numDias);
    }
 
    @Override
    public int getMaxVelocidad() {
-      
+
       return 200;
    }
 
    @Override
    public int compareTo(Object o) {
-      if (this.importeKm > ((Taxi) o).importeKm){
-         return 1;
-      } else if (this.importeKm == ((Taxi) o).importeKm){
-         return 0;
+      if (o.getClass() == Taxi.class) {
+         if (this.importeKm > ((Taxi) o).importeKm) {
+            return 1;
+         } else if (this.importeKm == ((Taxi) o).importeKm) {
+            return 0;
+         } else {
+            return -1;
+         }
       } else {
-         return -1;
+         if (o instanceof Turismo) {
+            return super.compareTo(o);
+         } else {
+            return 1;
+         }
       }
    }
-   
+
 }
